@@ -473,13 +473,33 @@ window.addEventListener('scroll', () => {
 handleScrollAnimations();
 
 // WhatsApp integration for mobile and desktop
-function openWhatsApp(message) {
+
+// WhatsApp yönlendirme: Tüm .whatsapp-btn butonları için tek event
+function setupWhatsAppButtons() {
   const phoneNumber = '447355613108';
-  const encodedMessage = encodeURIComponent(message);
-  const waUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-  // Kullanıcıyı doğrudan yönlendir
-  window.location.href = waUrl;
+  document.querySelectorAll('.whatsapp-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      const message = btn.getAttribute('data-message') || '';
+      const waUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+      window.location.href = waUrl;
+    });
+  });
 }
+
+window.addEventListener('load', function() {
+  createParticles();
+  addButtonEffects();
+  initMobileMenu();
+  initLogoAnimations();
+  setupWhatsAppButtons();
+  // Start counters with delay
+  setTimeout(() => {
+    animateCounter('count-ch', 30000, 2000);
+    animateCounter('count-show', 10000, 1800);
+    animateCounter('count-sport', 5000, 1600);
+  }, 2500);
+});
 
 // Fake subscribe flow with enhanced feedback
 function subscribe(){
