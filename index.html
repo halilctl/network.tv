@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5,user-scalable=yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>The Network TV — Üyelik</title>
+  <meta name="description" content="The Network TV — 30000+ kanal, 10000+ dizi, 5000+ spor kanalı. Genç, dinamik ve hareketli TV deneyimi.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Loading Screen -->
+  <div class="loading-screen" id="loadingScreen">
+    <div class="loading-logo">
+      <span>TN</span>
+    </div>
+    <div class="loading-text">The Network TV</div>
+    <div class="loading-bar">
+      <div class="loading-progress"></div>
+    </div>
+  </div>
+
+  <!-- Particle Background -->
+  <div class="particles" id="particles"></div>
+  
+  <!-- Mobile Overlay -->
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo"><span>TN</span></div>
+        <div>
+          <h1>The Network TV</h1>
+          <div style="font-size:12px;color:rgba(255,255,255,0.6)" data-translate="header.tagline">Genç. Dinamik. Kesintisiz.</div>
+        </div>
+      </div>
+      <nav class="desktop-nav">
+        <a href="#ozellikler" data-translate="nav.features">Özellikler</a>
+        <a href="#fiyatlar" data-translate="nav.pricing">Fiyatlar</a>
+        <div class="language-selector">
+          <button class="lang-btn" id="langBtn">
+            <span id="currentLang">🇹🇷 TR</span>
+            <span class="dropdown-arrow">▼</span>
+          </button>
+          <div class="lang-dropdown" id="langDropdown">
+            <a href="#" data-lang="tr" class="lang-option">
+              <span>🇹🇷</span> Türkçe
+            </a>
+            <a href="#" data-lang="en" class="lang-option">
+              <span>🇬🇧</span> English
+            </a>
+            <a href="#" data-lang="de" class="lang-option">
+              <span>🇩🇪</span> Deutsch
+            </a>
+          </div>
+        </div>
+      </nav>
+      
+      <!-- Mobile Menu Button -->
+      <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      
+      <!-- Mobile Navigation -->
+      <nav class="mobile-nav" id="mobileNav">
+        <a href="#ozellikler" data-translate="nav.features">Özellikler</a>
+        <a href="#fiyatlar" data-translate="nav.pricing">Fiyatlar</a>
+        <div class="mobile-language-selector">
+          <button class="mobile-lang-btn" id="mobileLangBtn">
+            <span id="mobileCurrentLang">🇹🇷 TR</span>
+            <span class="dropdown-arrow">▼</span>
+          </button>
+          <div class="mobile-lang-dropdown" id="mobileLangDropdown">
+            <a href="#" data-lang="tr" class="lang-option">
+              <span>🇹🇷</span> Türkçe
+            </a>
+            <a href="#" data-lang="en" class="lang-option">
+              <span>🇬🇧</span> English
+            </a>
+            <a href="#" data-lang="de" class="lang-option">
+              <span>🇩🇪</span> Deutsch
+            </a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero-left card">
+        <div class="floaters">
+          <div class="blob"></div>
+          <div class="blob b2" style="position:absolute;right:20px;top:90px;opacity:0.9"></div>
+        </div>
+
+        <div class="kicker" data-translate="hero.kicker">Sınırsız Eğlence</div>
+        <h2 class="headline" data-translate="hero.headline">Tüm favori kanallarınız <strong>tek</strong> yerde — <br>The Network TV ile izle, keşfet, takıl!</h2>
+        <p class="desc" data-translate="hero.description">30000+ fazla kanal, 10000+ dizi, 5000+ spor kanalı — genç ve dinamik bir yayın deneyimi. Reklamsız planlarımız ve yüksek hızlı akış altyapımız ile kesintisiz izleme keyfi.</p>
+
+        <div class="badges">
+          <div class="badge"><span style="font-size:18px">24/7</span><small data-translate="hero.badges.support">Canlı Destek</small></div>
+          <div class="badge"><span style="font-size:18px">4K</span><small data-translate="hero.badges.quality">Yüksek Kalite</small></div>
+          <div class="badge"><span style="font-size:18px">Çoklu</span><small data-translate="hero.badges.devices">Cihaz Desteği</small></div>
+        </div>
+
+        <div class="cta-row">
+          <button class="btn primary" onclick="openWhatsApp('Ücretsiz deneme yayını test etmek istiyorum')" data-translate="hero.cta.trial">
+            Ücretsiz Deneme Başlat
+          </button>
+          <button class="btn ghost" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'})" data-translate="hero.cta.how">Nasıl Çalışır?</button>
+        </div>
+
+        <div class="counters">
+          <div class="counter"><small data-translate="counters.channels">Kanallar</small><strong id="count-ch">0</strong></div>
+          <div class="counter"><small data-translate="counters.shows">Diziler</small><strong id="count-show">0</strong></div>
+          <div class="counter"><small data-translate="counters.sports">Spor Kanalları</small><strong id="count-sport">0</strong></div>
+        </div>
+
+        <div class="marquee"><p data-translate="marquee.text">30000+ kanal • 10000+ dizi • 5000+ spor kanalı • Genç ve dinamik arayüz • Hızlı akış • 7/24 destek</p></div>
+
+        <!-- Animated Logos Section -->
+        <div class="logos-section">
+          <div class="logos-title">
+            <span>Popüler Platformlar</span>
+          </div>
+          <div class="logos-container">
+            <div class="logos-track">
+              <!-- First set of logos -->
+              <div class="logo-item">
+                <img src="img/netflix.webp" alt="Netflix" loading="lazy">
+              </div>
+              <div class="logo-item">
+                <img src="img/disney.webp" alt="Disney+" loading="lazy">
+              </div>
+              <div class="logo-item">
+                <img src="img/hbomax.webp" alt="HBO Max" loading="lazy">
+              </div>
+              <div class="logo-item">
+                <img src="img/amazon.webp" alt="Amazon Prime" loading="lazy">
+              </div>
+              <div class="logo-item">
+                <img src="img/appletv.webp" alt="Apple TV+" loading="lazy">
+              </div>
+              <div class="logo-item">
+                <img src="img/exxen.webp" alt="Exxen" loading="lazy">
+              </div>
+              <div class="logo-item">
+                <img src="img/peacock.webp" alt="Peacock" loading="lazy">
+              </div>
+              
+              <!-- Second set of logos for seamless loop -->
+              <div class="logo-item">
+                <img src="img/netflix.webp" alt="Netflix" loading="lazy">
+              </div>
+              <div class="logo-item">
+                <img src="img/disney.webp" alt="Disney+" loading="lazy">
+              </div>
+              <div class="logo-item">
+                <img src="img/hbomax.webp" alt="HBO Max" loading="lazy">
+              </div>
+              <div class="logo-item">
+                <img src="img/amazon.webp" alt="Amazon Prime" loading="lazy">
+              </div>
+              <div class="logo-item">
+                <img src="img/appletv.webp" alt="Apple TV+" loading="lazy">
+              </div>
+              <div class="logo-item">
+                <img src="img/exxen.webp" alt="Exxen" loading="lazy">
+              </div>
+              <div class="logo-item">
+                <img src="img/peacock.webp" alt="Peacock" loading="lazy">
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <aside class="card">
+        <div class="plan-title">
+          <div>
+            <div style="font-size:14px;color:rgba(255,255,255,0.7)" data-translate="plan.popular">Popüler Plan</div>
+            <div class="plan-price" data-translate="plan.price">12 Aylık + 3 Ay hediye</div>
+            <div class="mini" data-translate="plan.discount">İndirimli yıllık ödeme ile daha da ucuz</div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-weight:800;color:var(--gold)" data-translate="plan.welcome">%20 Hoşgeldin İndirimi</div>
+          </div>
+        </div>
+
+        <div class="plan-opts">
+          <div class="mini" data-translate="plan.features.1">• 30.000+ premium kanal</div>
+          <div class="mini" data-translate="plan.features.2">• Gecikmesiz spor kanalları</div>
+          <div class="mini" data-translate="plan.features.3">• Tüm cihazlarla uyumlu (Android, iOS)</div>
+          <div class="mini" data-translate="plan.features.4">• Sürekli güncellenen içerikler</div>
+          <div class="mini" data-translate="plan.features.5">• +18 kanallar</div>
+          <div class="mini" data-translate="plan.features.6">• HD & FHD & 4K Ultra HD Yayın Kalitesi</div>
+          <div class="mini" data-translate="plan.features.7">• Ücretsiz Kurulum ve Destek</div>
+          <div class="mini" data-translate="plan.features.8">• 7/24 Destek</div>
+        </div>
+
+        <div style="margin-top:24px;text-align:center">
+          <button class="btn primary plan-buy-btn" onclick="openWhatsApp('Popüler plan hakkında bilgi almak istiyorum')">
+            Satın Al
+          </button>
+        </div>
+
+      </aside>
+    </section>
+
+    <section id="ozellikler" class="features">
+      <div class="feature">
+        <div style="font-size:22px;font-weight:800;color:var(--gold)" data-translate="features.watch.title">Heryerden İzle</div>
+        <h3 data-translate="features.watch.subtitle">Mobil, Tablet, TV</h3>
+        <p data-translate="features.watch.desc">Uygulamalarımız Android, iOS ve Smart TV'lerde çalışır. Cihazlar arasında kaldığınız yerden devam edin.</p>
+      </div>
+      <div class="feature">
+        <div style="font-size:22px;font-weight:800;color:var(--gold)" data-translate="features.sports.title">Spor Severlere</div>
+        <h3 data-translate="features.sports.subtitle">Canlı Spor & Etkinlikler</h3>
+        <p data-translate="features.sports.desc">5000+'den fazla spor kanalı ile maçları ve özel etkinlikleri yüksek kalitede izleyin.</p>
+      </div>
+      <div class="feature">
+        <div style="font-size:22px;font-weight:800;color:var(--gold)" data-translate="features.shows.title">Dizi & Film</div>
+        <h3 data-translate="features.shows.subtitle">10.000+ Dizi</h3>
+        <p data-translate="features.shows.desc">Güncel ve klasik diziler; kategorilere göre keşfetme, listeler oluşturma ve favorilere ekleme.</p>
+      </div>
+    </section>
+
+    <section id="fiyatlar" class="pricing">
+        <div class="price-card">
+          <div style="font-weight:800" data-translate="pricing.monthly">1 Aylık</div>
+          <div style="font-size:22px;margin-top:6px">€20</div>
+          <ul>
+            <li data-translate="plan.features.1">30.000+ premium kanal</li>
+            <li data-translate="plan.features.2">Gecikmesiz spor kanalları</li>
+            <li data-translate="plan.features.3">Tüm cihazlarla uyumlu (Android, iOS)</li>
+            <li data-translate="plan.features.4">Sürekli güncellenen içerikler</li>
+            <li data-translate="plan.features.5">+18 kanallar</li>
+            <li data-translate="plan.features.6">HD & FHD & 4K Ultra HD Yayın Kalitesi</li>
+            <li data-translate="plan.features.7">Ücretsiz Kurulum ve Destek</li>
+            <li data-translate="plan.features.8">7/24 Destek</li>
+          </ul>
+          <button class="btn ghost" onclick="openWhatsApp('Merhaba paketleriniz hakkında bilgi almak istiyorum')" data-translate="pricing.buy">Şimdi Satın Al</button>
+        </div>
+        <div class="price-card best">
+          <div style="font-weight:800" data-translate="pricing.sixmonth">6 Aylık</div>
+          <div style="font-size:22px;margin-top:6px">€40</div>
+          <ul>
+            <li data-translate="plan.features.1">30.000+ premium kanal</li>
+            <li data-translate="plan.features.2">Gecikmesiz spor kanalları</li>
+            <li data-translate="plan.features.3">Tüm cihazlarla uyumlu (Android, iOS)</li>
+            <li data-translate="plan.features.4">Sürekli güncellenen içerikler</li>
+            <li data-translate="plan.features.5">+18 kanallar</li>
+            <li data-translate="plan.features.6">HD & FHD & 4K Ultra HD Yayın Kalitesi</li>
+            <li data-translate="plan.features.7">Ücretsiz Kurulum ve Destek</li>
+            <li data-translate="plan.features.8">7/24 Destek</li>
+          </ul>
+          <button class="btn ghost" onclick="openWhatsApp('Merhaba paketleriniz hakkında bilgi almak istiyorum')" data-translate="pricing.buy">Şimdi Satın Al</button>
+        </div>
+        <div class="price-card">
+          <div style="font-weight:800" data-translate="pricing.yearly">12 Aylık + 3 Ay hediye</div>
+          <div style="font-size:22px;margin-top:6px">€65</div>
+          <ul>
+            <li data-translate="plan.features.1">30.000+ premium kanal</li>
+            <li data-translate="plan.features.2">Gecikmesiz spor kanalları</li>
+            <li data-translate="plan.features.3">Tüm cihazlarla uyumlu (Android, iOS)</li>
+            <li data-translate="plan.features.4">Sürekli güncellenen içerikler</li>
+            <li data-translate="plan.features.5">+18 kanallar</li>
+            <li data-translate="plan.features.6">HD & FHD & 4K Ultra HD Yayın Kalitesi</li>
+            <li data-translate="plan.features.7">Ücretsiz Kurulum ve Destek</li>
+            <li data-translate="plan.features.8">7/24 Destek</li>
+          </ul>
+          <button class="btn ghost" onclick="openWhatsApp('Merhaba paketleriniz hakkında bilgi almak istiyorum')" data-translate="pricing.buy">Şimdi Satın Al</button>
+        </div>
+    </section>
+
+
+    <footer>
+      <div>
+        <strong>The Network TV</strong>
+        <div style="font-size:13px;color:rgba(255,255,255,0.65)" data-translate="footer.copyright">© 2025 The Network TV. Tüm hakları saklıdır.</div>
+      </div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.6)" data-translate="footer.links">Gizlilik • Kullanım Koşulları • Destek</div>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
