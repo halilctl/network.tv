@@ -473,33 +473,41 @@ window.addEventListener('scroll', () => {
 handleScrollAnimations();
 
 // WhatsApp integration for mobile and desktop
-
-// WhatsApp yönlendirme: Tüm .whatsapp-btn butonları için tek event
-function setupWhatsAppButtons() {
+function openWhatsApp(message) {
   const phoneNumber = '447355613108';
-  document.querySelectorAll('.whatsapp-btn').forEach(btn => {
-    btn.addEventListener('click', function(e) {
-      e.preventDefault();
-      const message = btn.getAttribute('data-message') || '';
-      const waUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-      window.location.href = waUrl;
-    });
-  });
+  const encodedMessage = encodeURIComponent(message);
+  
+  // Check if it's a mobile device
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  
+  let whatsappUrl;
+  
+  if (isMobile) {
+    // For mobile devices, use the direct WhatsApp protocol
+    whatsappUrl = `whatsapp://send?phone=${phoneNumber}&text=${encodedMessage}`;
+  } else {
+    // For desktop, use the web version
+    whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+  }
+  
+  // Try to open WhatsApp
+  const link = document.createElement('a');
+  link.href = whatsappUrl;
+  link.target = '_blank';
+  link.rel = 'noopener noreferrer';
+  
+  // For mobile, try the direct protocol first, fallback to web
+  if (isMobile) {
+    try {
+      window.location.href = whatsappUrl;
+    } catch (e) {
+      // Fallback to web version if direct protocol fails
+      window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
+    }
+  } else {
+    window.open(whatsappUrl, '_blank');
+  }
 }
-
-window.addEventListener('load', function() {
-  createParticles();
-  addButtonEffects();
-  initMobileMenu();
-  initLogoAnimations();
-  setupWhatsAppButtons();
-  // Start counters with delay
-  setTimeout(() => {
-    animateCounter('count-ch', 30000, 2000);
-    animateCounter('count-show', 10000, 1800);
-    animateCounter('count-sport', 5000, 1600);
-  }, 2500);
-});
 
 // Fake subscribe flow with enhanced feedback
 function subscribe(){

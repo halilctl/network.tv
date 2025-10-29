@@ -563,11 +563,15 @@ footer{margin-top:38px;padding:18px;border-radius:12px;background:linear-gradien
   background: rgba(0,0,0,0.5);
   z-index: 999;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  visibility: hidden; /* keep it out of the accessibility/interaction flow when hidden */
+  pointer-events: none; /* prevent it from intercepting clicks when not active */
+  transition: opacity 0.3s ease, visibility 0.3s;
 }
 
 .mobile-overlay.active {
   opacity: 1;
+  visibility: visible;
+  pointer-events: auto; /* allow clicks to be caught when overlay is active */
 }
 
 /* Responsiveness */
